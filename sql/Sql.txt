@@ -1,0 +1,58 @@
+Name:-Rushikesh Janardhan Malusare
+
+Q1.
+
+output:-select c_name from customer order by c_name asc;
+
+Q2.
+output:-select * from product order by desc limit 10;
+
+Q3.
+
+output:-select * from employee order by desc limit(1,1);
+
+Q4.
+
+output:-select count(c_id)""from customer group by city;
+
+Q5.
+
+output:-select 
+
+Q6.
+
+output:-
+
+Q7.
+
+output:-select * from product where product_name like 'Pro%';
+
+Q8.
+output:-
+
+Q9.
+output:-
+
+Q10.
+output:-
+
+Q11.
+a)Data
+
+Q12.
+a)order by desc
+
+Q13.
+c)no specific order
+
+Q14.
+b)15.68
+
+Q15.
+b)count()
+
+Q16.
+output:-select c_id,c_name avg(t_amount) from customer where order_id > 2
+
+Q17.
+
