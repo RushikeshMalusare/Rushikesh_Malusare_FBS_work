@@ -1,0 +1,142 @@
+1.Write a query to display the names (first_name, last_name) using alias
+name "First Name", "Last Name.
+
+output:
+select f_name as"first name",l_name as"last name"from emp;
+
+2.Write a query to get unique department ID from employee table.
+
+output:
+select * from emp where dept_id ="unique";
+
+3.Write a query to get all employee details from the employee table order
+by first name, descending
+
+output:
+select * from emp order by f_name desc;
+
+4.Write a query to get the names (first_name, last_name), salary, PF of all
+the employees (PF is calculated as 15% of salary).
+
+output:
+select f_name,l_name,sal from emp where sal*1.15;
+
+5.Write a query to get the employee ID, names (first_name, last_name),
+salary in ascending order of salary.
+
+output:
+mysql> select e_id,f_name,l_name,sal from emp order by sal;
+
+6.Write a query to get the total salaries payable to employees.
+
+output:
+
+
+7.Write a query to get the maximum and minimum salary from employees
+table
+
+output:
+select min(sal),max(sal)from emp;
+
+8.Write a query to get the average salary and number of employees in the
+employees table.
+
+output:
+select avg(sal),count(e_id)from emp;
+
+9.Write a query to get the number of employees working with the
+company.
+
+output:
+select count(dept_id)from emp;
+
+10.Write a query to get the number of jobs available in the employees table
+
+output:
+select count(j_id)from emp;
+
+11.Write a query to select first 10 records from a table.
+
+output:
+  select * from emp limit 10;
+
+12.Write a query to display the name (first_name, last_name) and salary for
+all employees whose salary is not in the range $10,000 through $15,000.
+
+output:
+select f_name,l_name,sal from emp where sal not between 10000 and 15000;
+
+13.Write a query to display the name (first_name, last_name) and
+department ID of all employees in departments 30 or 100 in ascending
+order.
+
+output:
+ select f_name,l_name,dept_id from emp where dept_id in(30,100)order by f_name,l_name;
+
+14.Write a query to display the name (first_name, last_name) and salary for
+all employees whose salary is not in the range $10,000 through $15,000
+and are in department 30 or 100.
+
+output:
+  mysql> select f_name,l_name,sal from emp where sal not in(10000*83,15000*83) and dept_id not in(30,100);
+
+15.Write a query to display the name (first_name, last_name) and hire date
+for all employees who were hired in 1987.
+
+output:
+
+  select f_name,l_name,h_date from emp where year(h_date)=1987;
+
+16.Write a query to display the first_name of all employees who have both
+"b" and "c" in their first name.
+
+output:
+ select f_name from emp where f_name like '%b% or %c%';
+
+17.Write a query to display the last name, job, and salary for all employees
+whose job is that of a Programmer or a Shipping
+is not equal to $4,500, $10,000, or $15,000.
+
+output:
+select l_name,j_id,sal from emp where dept_id in(121,125) and sal not in(4500*83,10000*83,15000*83);
+
+
+18.Write a query to display the last name of employees whose names have
+exactly 6 characters.
+
+output:
+mysql> select l_name from emp where l_name like'______' ;  //6 underscore;
+
+19.Write a query to display the last name of employees having 'e' as the third
+character.
+
+output:
+select l_name from emp where l_name like '--e%';
+
+20.Write a query to display the jobs/designations available in the employees
+table.
+
+output:
+mysql> select distinct j_id from emp;
+
+21.Write a query to select all record from employees where last name in
+'BLAKE', 'SCOTT', 'KING' and 'FORD'
+
+output:
+select * from emp where l_name in("blake","scott","king","ford");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
