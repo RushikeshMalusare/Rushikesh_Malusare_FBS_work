@@ -1,0 +1,79 @@
+
+1.
+show databases;
++--------------------+
+| Database           |
++--------------------+
+| addp               |
+| bookpackage        |
+| customer           |
+| db1                |
+| hotel_management   |
+| information_schema |
+| mysql              |
+| performance_schema |
+| travel             |
++--------------------+
+
+
+2.
+mysql> create table country
+    -> (con_id int,
+    -> con_name varchar(20),
+    -> region_id int);
+Query OK, 0 rows affected, 2 warnings (0.08 sec)
+
+mysql> desc country;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| con_id    | int         | YES  |     | NULL    |       |
+| con_name  | varchar(20) | YES  |     | NULL    |       |
+| region_id | int         | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+
+
+3.
+ create table jobs
+    -> (job_id int primary key,
+    -> job_title varchar(20) not null,
+    -> min_sal int ,
+    -> max_sal int check (max_sal <25000 ));
+
+4.
+
+ create table job_histry
+    -> (emp_id int,
+    -> start_date date,
+    -> end_date date,
+    -> job_id int,
+    -> dept_id int);
+
+5.
+mysql> alter table country
+    -> modify con_id int unique;
+
+6.
+
+ create table job
+    -> (job_id int,
+    -> job_title varchar(20) default "blank",
+    -> min_sal int check (min_sal > 8000),
+    -> max_sal int);
+
+7.
+
+create table dept
+    -> (d_id int, d_name varchar(20),
+    -> manager_id int,
+    -> location varchar(20),
+    -> primary key(d_id,manager_id));
+
+8.
+ 
+ create table emp
+    -> (e_id int primary key,f_name varchar(20),l_name varchar(10),email varchar(19),
+    -> p_no int,h_date date,j_id int,sal decimal(5,1),
+    -> commition int ,manager_id int,dept_id int,
+    -> foreign key(dept_id,manager_id) references dept(d_id,manager_id));
+
