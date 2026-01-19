@@ -1,0 +1,56 @@
+1.
+
+ insert into emp values
+    -> (100,"steven","king","sking",8767453452,'1987-06-17',"ad_vp",17000,2,200,1),
+    -> (101,"neena","kocchar","nkochhar",3477348878,'1987-06-18',"ad_pres",34556,9,200,10),
+    -> (102,"lex","de haan","ldehaan",9823456782,'1987-06-19',"ad_vp",17000,0,200,10),
+    -> (103,"alexander","hunold","ahunold",2343487884,'1987-06-20',"it prog",9000,0,106,60),
+    -> (104,"bruce","ernst","bernt",73473.34873,'1987-06-21',"it prog",6000,0,103,60),
+    -> (105,"david","austin","daustin",5904234569,'1987-06-22',"it prog",4800,0,103,60),
+    -> (106,"valii","patabalia","vpatabal",5904234560,'1987-06-23',"it prog",4200,0,114,30),
+    -> (107,"diana","lorentz","dloren",5904235567,'1987-06-24',"it prog",4200,0,114,30),
+    -> (108,"nancy","greenberg","ngreenbe",5151244569,'1987-06-25',"sa man",12000,0,145,80),
+    -> (109,"daniel","faviet","dfaviet",5151244569,'1987-06-26',"sa man",9000,0,145,80);
+
+2.
+
+     insert into dept values
+    -> (100,"sales",201,1700);
+      insert into dept values
+    -> (101,"marketing",111,1500);
+     insert into dept values
+    -> (102,"shipping",123,1200);
+
+3.
+
+mysql> insert into job values
+    -> ("ad_pres","precident",20000,40000),
+    -> ("ad_vp","administration vice precident",15000,30000),
+    -> ("ad_asst","administration assistence",3000,6000),
+    -> ("fi_account","accountant",4200,9000),
+    -> ("ac_mgr","accountant manager",8200,16000),
+    -> ("ac_account","public accountant ",4200,9000),
+    -> ("sa_man","sales manager ",10000,20000),
+    -> ("la_man","lab manager ",20000,23000);
+
+4.
+
+ update job set max_sal= max_sal*1.10;
+
+5.
+
+ update emp set
+    -> email='@sdjhkjsdh.com'
+    -> where dept_id=80 and commition < 1.20;
+
+6.
+mysql> update emp set
+    -> email='as@123'
+    -> where manager_id=114;
+
+
+7.
+
+ update emp set
+    -> email='@sdjhkjsdh.com'
+    -> where dept_id=80 and commition < 1.20;
