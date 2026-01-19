@@ -1,0 +1,184 @@
+1.
+
+select * from book where author_name="loni" and cost < 600;
+
+2.
+
+select * from issue where return_date is null;
+
+3.
+
+update issue set return_date='2006-12-31' where lib_issue_id not in(7005,7006) and return_date is null ;
+
+4.
+
+mysql> update issue set issue_date= date_add(issue_date,interval 30 day);
+
+5.
+
+ select * from book where cost between 500 and 750 and category="database";
+
+6.
+
+select * from book where category in("database","rdbms","system");
+
+7.
+
+select * from member order by penalty_amount desc;
+
+8.
+
+ update book set cost=300 where book_no=103 and category="rdbms";
+
+9.
+select * from book order by category asc,cost desc ;
+
+
+10.
+
+ select book_name from book  ;
+
+11.
+
+select lib_issue_id,issue_date,return_date,day(issue_date)"Book Date" from issue;
+
+12.
+
+select * from member order by acc_open_date;
+
+13.
+
+
+
+14.
+
+select sum(penalty_amount)"total penalty amount" from member;
+
+15.
+
+select count(*)"total member" from member;
+
+16.
+
+select count(*)"total book" from book;
+
+17.
+
+select avg(fees_paid) from member;
+
+18.
+
+select category,count(*)"total" from book group by category;
+
+19.
+
+select book_no , count(*)"No Of Time Book Issue"from book group by book_no order by "No Of Time Book Issue" desc;
+
+20.
+
+select max(penalty_amount)"maximum penalty",min(penalty_amount)"minimum penalty",avg(penalty_amount)"
+            average penalty",sum(penalty_amount)"total penalty" from member;
+
+21.
+
+select member_id,count(book_no)"no of book" from issue group by member_id having count(book_no)>=2;
+
+22.
+
+select member_id,book_no ,count(*)"no of book" from issue group by member_id,book_no order by "no of book" desc;
+
+23.
+
+select month(issue_date),count(*)"no of book"from issue group by issue_date order by "no of book" desc;
+
+24.
+
+select b.book_no from book b left join issue i
+    -> on b.book_no=i.book_no
+    -> where i.book_no is null;
+
+25.
+
+select m.mem_id, lib_issue_id from member m
+    -> inner join issue i
+    -> on m.mem_id=i.member_id
+    -> ;
+
+26.
+
+ (select member_id,count(*)"total" from issue
+    -> group by member_id
+    -> order by "total" asc limit 1)
+    -> union
+    -> (select member_id,count(*)"total" from issue
+    -> group by member_id
+    -> order by "total" desc limit 1);
+
+27.
+
+ select * from issue where  month(issue_date)in(12,6);
+
+28.
+
+select b.book_no,b.book_name,i.issue_date from book b
+    -> inner join issue i
+    -> on b.book_no=i.book_no
+    -> where month(issue_date)=12 and category="database";
+
+29.
+
+select mem_id,mem_name,max_book_allowed from member
+    -> order by max_book_allowed desc;
+
+30.
+
+select b.book_no,b.book_name,i.issue_date,return_date from book b
+    -> inner join issue i
+    -> on b.book_no=i.book_no
+    -> inner join member m
+    -> on m.mem_id=i.member_id
+    -> where mem_name="Richa sharma";
+
+31.
+
+select * from member m inner join issue i
+    -> on m.mem_id=i.member_id
+    -> inner join book b
+    -> on b.book_no=i.book_no
+    -> where category="database";
+
+32.
+
+
+33.
+
+
+
+34.
+
+
+
+35.
+
+
+
+36.
+
+ select b.book_name,b.cost from book b
+    -> inner join issue i
+    -> on b.book_no=i.book_no
+    -> where day(return_date)>30;
+
+37.
+
+ select author_name,book_name from book where book_name >1;
+
+38.
+
+
+
+
+
+
+
+
