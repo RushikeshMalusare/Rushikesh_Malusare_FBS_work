@@ -1,0 +1,269 @@
+1.
+
+ create table member
+    -> (mem_id int,
+    -> mem_name varchar(30),
+    -> mem_add varchar(30),
+    -> acc_open_date date,
+    -> membership_type varchar(20),
+    -> fees_paid int,
+    -> max_book_allowed int,
+    -> penalty_amount decimal(6,2));
+
+
+ create table book
+    -> (book_no int,
+    -> book_name varchar(30),
+    -> author_name varchar(30),
+    -> cost decimal(7,2),
+    -> category char(10));
+
+ create table issue
+    -> (lib_issue_id int,
+    -> book_no int,
+    -> member_id int,
+    -> issue_date date,
+    -> return_date date);
+
+2.
+
+| member | CREATE TABLE `member` (
+  `mem_id` int DEFAULT NULL,
+  `mem_name` varchar(30) DEFAULT NULL,
+  `mem_add` varchar(30) DEFAULT NULL,
+  `acc_open_date` date DEFAULT NULL,
+  `membership_type` varchar(20) DEFAULT NULL,
+  `fees_paid` int DEFAULT NULL,
+  `max_book_allowed` int DEFAULT NULL,
+  `penalty_amount` decimal(6,2) DEFAULT NULL
+
+book  | CREATE TABLE `book` (
+  `book_no` int DEFAULT NULL,
+  `book_name` varchar(30) DEFAULT NULL,
+  `author_name` varchar(30) DEFAULT NULL,
+  `cost` decimal(7,2) DEFAULT NULL,
+  `category` char(10) DEFAULT NULL
+
+ issue | CREATE TABLE `issue` (
+  `lib_issue_id` int DEFAULT NULL,
+  `book_no` int DEFAULT NULL,
+  `member_id` int DEFAULT NULL,
+  `issue_date` date DEFAULT NULL,
+  `return_date` date DEFAULT NULL
+
+
+3.
+
+ drop table member;
+
+4.
+
+create table member
+    -> (mem_id int primary key,
+    -> mem_name varchar(30),
+    -> mem_add varchar(30),
+    -> acc_open_date date,
+    -> membership_type varchar(20) check(membership_type in("lifetime"||"annual"||"half yearly"||"quarterly")),
+    -> fees_paid int,
+    -> max_book_allowed int);
+
+
+5.
+
+ alter table member
+    -> modify column mem_name char(30);
+
+
+6.
+
+mysql> alter table issue
+    -> add name char(30);
+
+7.
+
+alter table issue
+    -> drop column name ;
+
+
+
+8.
+
+mysql> rename table issue to lib_issue;
+
+
+9.
+
+ insert into member (mem_id,mem_name,mem_add,acc_open_date,membership_type,fees_paid,max_book_allowed,penalty_amount) values (1,"rohit_sharma","pune",
+    -> '2005-08-15',"lifetime",25000,5,50);
+insert into member (mem_id,mem_name,mem_add,acc_open_date,membership_type,fees_paid,max_book_allowed) values (2,"yash gupta","pune",
+    -> '2025-08-25',"annual,1000,3);
+
+
+10.
+
+(7,"Atul","nashik",'2023-03-21',"annual",3289,3,50),
+    -> (8,"mahesh","nagpur",'2023-2-01',"annual",3289,3,50),
+    -> (9,"gopal","pune",'2021-02-1',"lifetime",9823,4,25),
+    -> (10,"Ajay","nanded",'2023-03-21',"half yearly",3289,3,90),
+    -> (11,"ankush","nagar",'2025-02-2',"quarterly",5000,2,30);
+
+
+11.
+
+alter table member
+    -> modify column mem_name char(20);
+
+
+12.
+
+insert into member values
+    -> (12,"gopal","pune",'2021-02-1',"lifetime",9823,110,25);
+ERROR 3819 (HY000): Check constraint 'member_chk_3' is violated.
+
+13.
+
+create table member101
+    -> (mem_id int);
+
+14.
+
+alter table member
+     modify column max_book_allowed int check(max_book_allowed <100);
+       modify column penalty_amount int check(penalty_amount <=1000);
+
+
+15.
+
+mysql> drop table book;
+
+
+16.
+
+create table book
+    -> (book_no int primary key,
+    -> book_name varchar(20) not null,
+    -> book_category varchar(20) check(book_category in ("system","fiction","database","rdbms")));
+
+17.
+alter table book
+    -> add column author varchar(20) not null after book_name,
+    -> add column cost int not null after author;
+
+insert into book values
+    -> (101,"c","denis ritchie",450,"system"),
+    -> (102,"oracle","loni",550,"database"),
+    -> (103,"master in sql","loni",250,"database"),
+    -> (104,"pl sql","scott urman",750,"database");
+
+
+18.
+
+insert into book(book_no,book_name,author,cost,book_category) values
+     (107,"alchemist","paulo coelho",654,"fiction"),
+     (108,"ikigai","frances miralles",897,"self helf");
+
+19.
+
+CREATE TABLE `book` (
+  `book_no` int NOT NULL,
+  `book_name` varchar(20) NOT NULL,
+  `author` varchar(20) NOT NULL,
+  `cost` int NOT NULL,
+  `book_category` enum('system','database','rdbms','biography','self helf','fiction') DEFAULT NULL,
+  PRIMARY KEY (`book_no`)
+
+
+20.
+
+ alter table book
+    -> modify book_category enum("system","database","rdbms","biography","self helf","fiction","science");
+insert into book(book_no,book_name,author,cost,book_category) values
+    -> (109,"national geographic","adis scott",1000,"science");
+
+21.
+ 
+rename table lib_issue to issue;
+
+22.
+
+drop table issue;
+
+23.
+
+create table issue
+    -> (issue_id int primary key,
+    -> book_no int,
+    -> mem_id int,
+    -> issue_date date,
+    -> return_date date,
+    -> foreign key (book_no)references book(book_no),
+    -> foreign key (mem_id)references member(mem_id));
+
+24.
+
+insert into issue (issue_id,book_no,mem_id,issue_date) values
+    (7001,101,1,'2006-12-10'),
+    (7002,102,2,'2012-12-03'),
+    (7003,103,3,'2003-03-12'),
+    (7004,104,4,'2007-12-21'),
+    (7005,105,5,'2002-01-19'),
+    (7006,106,6,'2025-08-21');
+  select issue_id,book_no,mem_id,issue_date from issue;
+
+25.
+
+alter table issue
+    -> drop constraint issue_ibfk_1,
+    -> drop constraint issue_ibfk_2;
+
+26.
+
+insert into issue (issue_id,book_no,mem_id,issue_date) values
+    -> (7007,107,8,'2025-08-21'); 
+
+27.
+ alter table issue
+    -> add constraint fk_mem
+    -> foreign key (mem_id)references member(mem_id);
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`ass2`.`#sql-1514_1f`, 
+CONSTRAINT `fk_mem` FOREIGN KEY (`mem_id`) REFERENCES `member` (`mem_id`)
+28.
+
+
+
+
+29.
+
+mysql> alter table member
+    -> delete from member where mem_id=1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax 
+   to use near 'delete from member where mem_id=1' at line 2
+
+30.
+
+ select * from member;
+ select * from issue;
+  select * from book;
+
+31.
+
+ update issue set
+    -> return_date= date_add(issue_date,interval  15 day) where issue_id in(7004,7005);
+
+32.
+
+delete from issue where mem_id=6 and issue_date >'2012-12-03';
+Query OK, 1 row affected (0.01 sec)
+
+33.
+
+delete from issue where mem_id=6 and issue_date >'2012-12-03';
+Query OK, 1 row affected (0.01 sec)
+
+34.
+
+drop table member;
+
+35.
+
+drop table book;
